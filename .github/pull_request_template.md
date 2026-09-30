@@ -1,5 +1,7 @@
 ## PMLR Proceedings Initial Submission
 
+> **Note**: GitHub Actions runs `pmlint` on initial submission pull requests. Wait for that check to be green, or run `pmlint --check` locally first.
+
 ### Conference Information
 - **Conference Name**: 
 - **Volume Number**: 
