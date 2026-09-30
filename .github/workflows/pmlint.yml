@@ -1,0 +1,36 @@
+# pmlint — pre-publication volume check
+# Checks out latest mlresearch/papersite and runs pmlint --check.
+# Skips automatically once gh-pages exists (volume already published).
+# On proceedings-template itself the job is skipped (repo name is not vNNN/rNNN).
+
+name: pmlint
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    if: startsWith(github.event.repository.name, 'v') || startsWith(github.event.repository.name, 'r')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout volume
+        uses: actions/checkout@v4
+
+      - name: Checkout papersite tooling
+        uses: actions/checkout@v4
+        with:
+          repository: mlresearch/papersite
+          path: .papersite-tools
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.0"
+
+      - name: Run pmlint --check
+        env:
+          PAPERSITE_ROOT: ${{ github.workspace }}/.papersite-tools
+          PMLINT_SKIP_UPDATE: "1"
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: bash "$PAPERSITE_ROOT/bin/pmlint" --check

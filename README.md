@@ -55,6 +55,20 @@ Each author must sign a permission form. The forms should be:
 
 To organize proceedings in sections, add a `sections` field to the `@Proceedings` entry and a `section` field to each paper entry.
 
+## Validate before opening a PR
+
+Before opening a pull request, validate the volume locally with `pmlint`:
+
+```bash
+# Install once (from papersite)
+bash /path/to/papersite/bin/install-pmlint
+
+# Or run without installing if papersite is a sibling checkout
+../papersite/bin/pmlint --check
+```
+
+On volume repositories (`vNNN` / `rNNN`), GitHub Actions also runs `pmlint` on every pull request. See [Lint a volume](https://github.com/mlresearch/papersite#lint-a-volume) for details.
+
 ## Submission Process
 
 ### Initial Proceedings Submission

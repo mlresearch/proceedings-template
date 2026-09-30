@@ -34,6 +34,7 @@ Please confirm that you have completed the following requirements by checking al
   - [ ] Validating the BibTeX file syntax
   - [ ] Ensuring all required metadata is present and correctly formatted
   - [ ] Confirming all paper identifiers are unique and follow the naming convention
+  - [ ] `pmlint --check` passes locally, or wait for the GitHub Actions pmlint check to be green
 
 - [ ] Permission forms:
   - [ ] Collected from all authors
