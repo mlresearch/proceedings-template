@@ -1,6 +1,6 @@
 ## PMLR Proceedings Initial Submission
 
-> **Note**: GitHub Actions runs `pmlint` on initial submission pull requests. Wait for that check to be green, or run `pmlint --check` locally first.
+> **Note**: GitHub Actions runs `pmlint` (BibTeX/PDF intake) on initial submission pull requests. Wait for that check to be green, or run `pmlint --check` locally first. The separate `pmlint-posts` check only runs if `_posts/` files change and does not apply to this initial submission.
 
 ### Conference Information
 - **Conference Name**: 
