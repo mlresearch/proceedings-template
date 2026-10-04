@@ -1,7 +1,10 @@
 # pmlint — pre-publication volume check
 # Checks out latest mlresearch/papersite and runs pmlint --check.
 # Skips automatically once gh-pages exists (volume already published).
-# On proceedings-template itself the job is skipped (repo name is not vNNN/rNNN).
+#
+# Runs on:
+#   - volume repos (vNNN / rNNN)
+#   - mlresearch/proceedings-template (initial submission PRs)
 
 name: pmlint
 
@@ -11,7 +14,10 @@ on:
 
 jobs:
   check:
-    if: startsWith(github.event.repository.name, 'v') || startsWith(github.event.repository.name, 'r')
+    if: >
+      startsWith(github.event.repository.name, 'v') ||
+      startsWith(github.event.repository.name, 'r') ||
+      github.event.repository.name == 'proceedings-template'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout volume

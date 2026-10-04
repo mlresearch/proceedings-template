@@ -67,7 +67,12 @@ bash /path/to/papersite/bin/install-pmlint
 ../papersite/bin/pmlint --check
 ```
 
-On volume repositories (`vNNN` / `rNNN`), GitHub Actions also runs `pmlint` on every pull request. See [Lint a volume](https://github.com/mlresearch/papersite#lint-a-volume) for details.
+GitHub Actions on this template (and on volume repos `vNNN` / `rNNN`) runs two separate checks as appropriate:
+
+- **`pmlint`** — BibTeX / PDF intake check on every pull request (the initial proceedings submission path). Once a volume is published (`gh-pages` exists), this check skips automatically.
+- **`pmlint-posts`** — `_posts` YAML check, only when files under `_posts/` change (post-publication corrections). It does not run on the initial BibTeX/PDF submission.
+
+See [Lint a volume](https://github.com/mlresearch/papersite#lint-a-volume) for details.
 
 ## Submission Process
 
